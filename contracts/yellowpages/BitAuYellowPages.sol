@@ -18,15 +18,19 @@ contract BitAuYellowPages {
         uint pointer;
     }
 
+    address public approver;
+
     // partners
     mapping(address => Entry) entryMap;
     address[] public entryList;
-    // barsf address, TODO: should be changed to barsf address
-    address approver;
 
     // to be confirmed
     mapping(address => Entry) tbcEntryMap;
     address[] public tbcEntryList;
+
+    function BitAuYellowPages() {
+        approver = msg.sender;
+    }
 
     function isEntry(address _addr) public constant returns (bool isIndeed) {
         if (entryList.length == 0) return false;
